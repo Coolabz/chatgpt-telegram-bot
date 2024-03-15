@@ -26,7 +26,7 @@ def message_text(message: Message) -> str:
                           key=(lambda item: item[0].offset)):
         message_txt = message_txt.replace(text, '').strip()
 
-    return message_txt if len(message_txt) > 0 else ''
+    return message_txt if len(message_txt) > 0 and message_txt[0] == 'Ричи' or 'Richy' else ''
 
 
 async def is_user_in_group(update: Update, context: CallbackContext, user_id: int) -> bool:
