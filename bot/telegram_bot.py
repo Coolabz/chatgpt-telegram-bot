@@ -651,15 +651,15 @@ class ChatGPTTelegramBot:
         """
         React to incoming messages and respond accordingly.
         """
-        if update.edited_message or not update.message or update.message.via_bot:
-            return
-
-        if not await self.check_allowed_and_within_budget(update, context):
-            return
-        
         if 'Ричи' or 'Richy'in message_text:
+            if update.edited_message or not update.message or update.message.via_bot:
+                return
+
+            if not await self.check_allowed_and_within_budget(update, context):
+                return
+
             logging.info(
-            f'New message received from user {update.message.from_user.name} (id: {update.message.from_user.id})')
+                f'New message received from user {update.message.from_user.name} (id: {update.message.from_user.id})')
             chat_id = update.effective_chat.id
             user_id = update.message.from_user.id
             prompt = message_text(update.message)
