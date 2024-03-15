@@ -14,22 +14,22 @@ from telegram.ext import CallbackContext, ContextTypes
 from usage_tracker import UsageTracker
 
 
-def message_text(message: Message) -> str:
-    """
-    Returns the text of a message, excluding any bot commands.
-    """
-    message_txt = message.text
-    if "Ричи" in message_txt:
-        if message_txt is None:
-            return ''
+# def message_text(message: Message) -> str:
+#     # """
+#     # Returns the text of a message, excluding any bot commands.
+#     # """
+#     # message_txt = message.text
+#     # if "Ричи" in message_txt:
+#     #     if message_txt is None:
+#     #         return ''
 
-        for _, text in sorted(message.parse_entities([MessageEntity.BOT_COMMAND]).items(),
-                            key=(lambda item: item[0].offset)):
-            message_txt = message_txt.replace(text, '').strip()
+#     #     for _, text in sorted(message.parse_entities([MessageEntity.BOT_COMMAND]).items(),
+#     #                         key=(lambda item: item[0].offset)):
+#     #         message_txt = message_txt.replace(text, '').strip()
 
-        return message_txt if len(message_txt) > 0 else ''
-    else: 
-        pass
+#     #     return message_txt if len(message_txt) > 0 else ''
+#     # else: 
+#     #     pass
 
 
 async def is_user_in_group(update: Update, context: CallbackContext, user_id: int) -> bool:
