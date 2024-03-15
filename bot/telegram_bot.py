@@ -651,7 +651,7 @@ class ChatGPTTelegramBot:
         """
         React to incoming messages and respond accordingly.
         """
-        if 'Ричи' or 'Richy'in message_text:
+        if 'Ричи' or 'Richy'in message_text(update.message):
             if update.edited_message or not update.message or update.message.via_bot:
                 return
 
